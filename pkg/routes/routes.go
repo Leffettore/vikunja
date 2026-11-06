@@ -719,6 +719,7 @@ func registerAPIRoutes(a *echo.Group, noAuthRateLimit, refreshRateLimit echo.Mid
 	a.GET("/tasks/:projecttask", taskHandler.ReadOneWeb)
 	a.GET("/projects/:project/tasks/by-index/:index", taskHandler.ReadOneWeb, ResolveProjectIdentifier())
 	a.GET("/tasks", taskCollectionHandler.ReadAllWeb)
+	a.GET("/tasks/all", taskCollectionHandler.ReadAllWeb) // compat: legacy mobile app still calls /tasks/all
 	a.DELETE("/tasks/:projecttask", taskHandler.DeleteWeb)
 	a.POST("/tasks/:projecttask", taskHandler.UpdateWeb)
 
